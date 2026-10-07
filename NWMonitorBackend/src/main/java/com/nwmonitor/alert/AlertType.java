@@ -1,0 +1,13 @@
+package com.nwmonitor.alert;
+
+public enum AlertType {
+    NEW_DEVICE,
+    DEVICE_IP_CONFLICT,
+    EXTERNAL_CONNECTION_ATTEMPT,
+    PORT_SCAN,
+    LOGIN_BRUTE_FORCE,
+    INTERNET_DOWN,
+    INTERNET_RESTORED,
+    COLLECTOR_FAILURE,
+    BASELINE_ESTABLISHED
+}

@@ -1,0 +1,36 @@
+# Run on the always-on monitor box (Raspberry Pi / mini PC):  docker compose up -d --build
+# Then open http://<box-ip>:8081 and create the root account.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: nwmonitor
+      POSTGRES_USER: nwmonitor
+      POSTGRES_PASSWORD: ${NWM_DB_PASSWORD:-change-me}
+    volumes: [dbdata:/var/lib/postgresql/data]
+    ports: ["127.0.0.1:5432:5432"]
+    restart: unless-stopped
+
+  backend:
+    build: ./NWMonitorBackend
+    depends_on: [db]
+    # host networking lets the scanner see the real LAN (ARP table); Linux only.
+    network_mode: host
+    environment:
+      NWM_DB_URL: jdbc:postgresql://127.0.0.1:5432/nwmonitor
+      NWM_DB_PASSWORD: ${NWM_DB_PASSWORD:-change-me}
+      NWM_JWT_SECRET: ${NWM_JWT_SECRET:?set a random 32+ char secret in .env}
+      NWM_CORS_ORIGINS: http://localhost:8081
+      NWM_TIMEZONE: ${NWM_TIMEZONE:-Asia/Kolkata}
+    restart: unless-stopped
+
+  frontend:
+    build: ./nw-monitor-frontend
+    # nginx proxies /api to the host-networked backend
+    extra_hosts: ["backend:host-gateway"]
+    ports: ["8081:80"]
+    depends_on: [backend]
+    restart: unless-stopped
+
+volumes:
+  dbdata:

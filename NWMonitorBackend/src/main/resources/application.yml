@@ -1,0 +1,35 @@
+spring:
+  application.name: nw-monitor-backend
+  datasource:
+    url: ${NWM_DB_URL:jdbc:postgresql://localhost:5432/nwmonitor}
+    username: ${NWM_DB_USER:nwmonitor}
+    password: ${NWM_DB_PASSWORD:nwmonitor}
+  jpa:
+    open-in-view: false
+    hibernate.ddl-auto: validate
+  threads.virtual.enabled: true
+  jackson:
+    default-property-inclusion: non_null
+    serialization.write-dates-as-timestamps: false
+
+server:
+  port: ${NWM_PORT:8080}
+  error.include-message: never
+
+management:
+  endpoints.web.exposure.include: health,info
+  endpoint.health.probes.enabled: true
+
+springdoc:
+  swagger-ui.path: /swagger-ui.html
+
+nwm:
+  timezone: ${NWM_TIMEZONE:}            # blank = server default
+  security:
+    jwt-secret: ${NWM_JWT_SECRET:}      # >= 32 chars; random per start if blank
+    access-token-minutes: 30
+    refresh-token-days: 7
+    cors-allowed-origins: ${NWM_CORS_ORIGINS:http://localhost:5173}
+  bootstrap:
+    root-username: ${NWM_ROOT_USERNAME:}   # optional: create root at first start
+    root-password: ${NWM_ROOT_PASSWORD:}
