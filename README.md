@@ -9,6 +9,21 @@ Monitor your home network: see every device, the sites each one looks up, how mu
 | `collector-agent/` | Optional Python agent that counts bytes per device and spots inbound probes, then pushes them to the API. |
 | `docker-compose.yml` | Runs database + backend + UI together on a Linux monitor box. |
 
+## Full documentation
+
+This README is the condensed version. The complete step-by-step tutorial series lives in [`docs/`](docs/README.md):
+
+| Guide | Covers |
+|---|---|
+| [Overview and planning](docs/01-overview-and-planning.md) | What is possible, what is not, choosing a setup |
+| [Raspberry Pi setup](docs/02-raspberry-pi.md) · [PC / mini PC setup](docs/03-pc-or-mini-pc.md) | Preparing the always-on monitor box |
+| [Network placement](docs/04-network-placement.md) | Where the box sits; ISP router settings; gateway build |
+| [Install and configure](docs/05-install-and-configure.md) | Docker deployment, root user, first scan |
+| [Pi-hole](docs/06-pihole.md) · [Traffic agent](docs/07-collector-agent.md) · [Alerts](docs/08-alerts-and-telegram.md) | Enabling each feature |
+| [Operations and security](docs/09-operations-and-security.md) · [Troubleshooting](docs/10-troubleshooting.md) · [API](docs/11-api-reference.md) | Running it day to day |
+
+[`skills.md`](skills.md) is a guided setup runbook that a person or an AI assistant can follow stage by stage.
+
 ## Contents
 1. [Read this first: what can and cannot be monitored](#1-read-this-first-what-can-and-cannot-be-monitored)
 2. [Architecture](#2-architecture)
@@ -30,7 +45,7 @@ Monitor your home network: see every device, the sites each one looks up, how mu
 
 ## 1. Read this first: what can and cannot be monitored
 
-An ISP router (Airtel, Tata Fiber, ...) shows no per-device logs, so a **monitor box** on your LAN has to supply the data. Each feature needs a different source:
+An ISP-supplied router shows no per-device logs, so a **monitor box** on your LAN has to supply the data. Each feature needs a different source:
 
 | Feature | Data source | Works out of the box? |
 |---|---|---|
@@ -203,7 +218,7 @@ Once the box sees the traffic:
         LAN_PREFIX=192.168.1. \
         python3 agent.py
    ```
-   `REPORT_SECONDS` (default 30) sets how often it reports.
+   `REPORT_SECONDS` (default 30) sets how often it reports. Optional: `IFACE` (sniff one interface) and `PROTECTED_IPS` (your WAN IP, so inbound probes addressed to it are detected). See [docs/07](docs/07-collector-agent.md) for running it as a service.
 3. **Data usage** and the dashboard now fill in. Totals are shown in MB (1 MB = 1,048,576 bytes), split into download/upload, per device per day.
 
 Run the agent as a service (systemd) so it survives reboots. Rotating the key invalidates old agents.

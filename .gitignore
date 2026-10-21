@@ -1,3 +1,6 @@
 .env
 .DS_Store
 .github/modernize/
+__pycache__/
+*.pyc
+docs/network-monitor-tutorial.md
