@@ -1,3 +1,13 @@
+---
+title: "API reference"
+description: "REST API for building your own client or collector: authentication, endpoints and ingest formats."
+slug: api-reference
+series: "Home Network Monitor"
+order: 11
+tags: [api, rest, openapi]
+updated: 2026-10-22
+---
+
 # 11. API reference
 
 The backend is a standalone REST API. Anything the web UI does, a mobile app or script can do. Base path: `/api/v1`.

@@ -1,3 +1,13 @@
+---
+title: "Overview and planning"
+description: "What a home network monitor can and cannot see, and how to choose the right setup before you buy anything."
+slug: overview-and-planning
+series: "Home Network Monitor"
+order: 1
+tags: [planning, home-network, privacy]
+updated: 2026-10-22
+---
+
 # 1. Overview and planning
 
 Read this before buying or installing anything. It explains what the system can see, what it cannot, and how to choose a setup that matches what you want.

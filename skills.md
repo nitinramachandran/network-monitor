@@ -31,7 +31,7 @@ Ask these first and record the answers.
 
 1. What do you want: (a) devices + new-device alerts, (b) also sites visited, (c) also MB per device and external intrusion?
 2. What will be the monitor box: Raspberry Pi (which model, how much RAM) or a PC/mini PC/laptop? Wired Ethernet available?
-3. Which ISP/router, and can you log into its admin page? Does it allow DHCP DNS change and address reservation?
+3. Which ISP/router (Airtel, Tata Play Fiber, JioFiber, other), and can you log into its admin page? Run the router test in `docs/12-isp-router-guide.md` section 12.2: can DHCP DNS be changed, is DHCP greyed out, is address reservation possible, is there a bridge mode, and is the WAN IP behind CGNAT?
 4. Comfort with terminal/SSH (none, some, strong)?
 5. For (c): willing to restructure the network (box as gateway + access point) or own a managed switch with port mirroring?
 6. Do you want phone alerts via Telegram?
@@ -41,7 +41,8 @@ Ask these first and record the answers.
 | Wants | Setup | Stages to run |
 |---|---|---|
 | (a) | A: box beside router | 0, 1, 2 |
-| (b) | A + Pi-hole | 0, 1, 2, 3 |
+| (b) and the router allows DHCP DNS | A + Pi-hole | 0, 1, 2, 3 |
+| (b) and the router locks DHCP/DNS | A2: own router behind the ISP router (docs/12 section 12.5), or B | 0, 1, 2, 3 |
 | (c) with willingness to restructure | B: box as gateway | 0, 1 (gateway variant), 2, 3, 4 |
 | (c) with managed switch | C: mirror port | 0, 1, 2, 3, 4 |
 | Just evaluating on a laptop | see README section 12 (macOS) or run dev mode | none of the box stages |
@@ -106,7 +107,7 @@ If the list is empty, use the "Scan finds no devices" table in `docs/10-troubles
 
 ## Stage 3: Pi-hole (sites visited)
 
-Skip unless the user wants web activity. Docs: `docs/06-pihole.md`, router steps in `docs/04-network-placement.md` section 4.3.
+Skip unless the user wants web activity. Docs: `docs/06-pihole.md`, router steps in `docs/04-network-placement.md` section 4.3 and provider notes in `docs/12-isp-router-guide.md`.
 
 1. On the box: `curl -sSL https://install.pi-hole.net | sudo bash` (Pi-hole **v6**; choose the wired interface; enable query logging). Ubuntu: free port 53 first (docs/03 section 3.9). `sudo pihole setpassword`.
 2. Test one device manually: `nslookup example.com <box-ip>` and see it in Pi-hole's Query Log with the device's own IP.
@@ -187,3 +188,4 @@ Docs: `docs/09-operations-and-security.md`.
 | Operations and security | `docs/09-operations-and-security.md` |
 | Troubleshooting | `docs/10-troubleshooting.md` |
 | API | `docs/11-api-reference.md` |
+| ISP routers (Airtel, Tata Play Fiber, JioFiber) | `docs/12-isp-router-guide.md` |

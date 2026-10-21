@@ -1,3 +1,13 @@
+---
+title: "Alerts and Telegram"
+description: "Get phone notifications for new devices and suspicious activity, and tune alert noise."
+slug: alerts-and-telegram
+series: "Home Network Monitor"
+order: 8
+tags: [telegram, alerts]
+updated: 2026-10-22
+---
+
 # 8. Alerts and Telegram
 
 Alerts always appear inside the monitor (the **Alerts** page, with a red counter in the sidebar). Telegram adds instant phone notifications. This guide sets up Telegram, explains each alert, and shows how to tune the noise.

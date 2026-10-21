@@ -1,3 +1,13 @@
+---
+title: "Web activity with Pi-hole"
+description: "See which sites each device looks up by connecting Pi-hole v6 to the monitor, and stop devices bypassing it."
+slug: pihole-web-activity
+series: "Home Network Monitor"
+order: 6
+tags: [pi-hole, dns, privacy]
+updated: 2026-10-22
+---
+
 # 6. Web activity with Pi-hole
 
 Every website visit starts with a DNS lookup ("what is the address of youtube.com?"). Pi-hole is a DNS server that logs each lookup and which device asked. The monitor reads that log and shows the domains each device looked up. Pi-hole also blocks many ad and tracker domains as a bonus.

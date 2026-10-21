@@ -1,3 +1,13 @@
+---
+title: "Install and configure the application"
+description: "Deploy the monitor with Docker Compose, create the root user, run the first scan and name your devices."
+slug: install-and-configure
+series: "Home Network Monitor"
+order: 5
+tags: [docker, spring-boot, react]
+updated: 2026-10-22
+---
+
 # 5. Install and configure the application
 
 This guide deploys the monitor on your prepared box (from [guide 2](02-raspberry-pi.md) or [3](03-pc-or-mini-pc.md)) with Docker Compose, creates the root user, and runs the first scan. You should already have:

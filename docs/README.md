@@ -1,3 +1,13 @@
+---
+title: "Home Network Monitor: Setup Guide"
+description: "A step-by-step tutorial series for monitoring your home network: devices, sites visited, data usage and intrusion alerts."
+slug: index
+series: "Home Network Monitor"
+order: 0
+tags: [home-network, monitoring, tutorial]
+updated: 2026-10-22
+---
+
 # Home Network Monitor: Setup Guide
 
 A step-by-step tutorial series for setting up a home network monitor: every device on your network, the sites each one looks up, data used per device per day, and alerts when a new device joins or something suspicious happens.
@@ -11,7 +21,7 @@ The software is in this repository: a Java (Spring Boot) API, a React web UI, an
 | 1 | [Overview and planning](01-overview-and-planning.md) | Understand what is and is not possible, and pick your setup |
 | 2 | [Set up a Raspberry Pi](02-raspberry-pi.md) | Flash, secure and prepare a Pi as the monitor box |
 | 3 | [Set up a PC or mini PC](03-pc-or-mini-pc.md) | Prepare an old PC, mini PC or laptop instead |
-| 4 | [Placing the monitor in your network](04-network-placement.md) | Choose where the box sits; configure your ISP router |
+| 4 | [Placing the monitor in your network](04-network-placement.md) | Choose where the box sits; configure your ISP router (see also guide 12) |
 | 5 | [Install and configure the application](05-install-and-configure.md) | Deploy with Docker, create the root user, run the first scan |
 | 6 | [Web activity with Pi-hole](06-pihole.md) | See which sites each device looks up |
 | 7 | [Data usage and intrusion agent](07-collector-agent.md) | Get MB per device per day and inbound-probe alerts |
@@ -19,6 +29,7 @@ The software is in this repository: a Java (Spring Boot) API, a React web UI, an
 | 9 | [Operations and security](09-operations-and-security.md) | Update, back up, secure, recover a lost password |
 | 10 | [Troubleshooting](10-troubleshooting.md) | Fix common problems |
 | 11 | [API reference](11-api-reference.md) | Build your own client or collector |
+| 12 | [ISP router guide](12-isp-router-guide.md) | Airtel, Tata Play Fiber and JioFiber: what to test, what users report, workarounds. Read alongside guide 4. |
 
 For an AI assistant or a quick checklist, see [`skills.md`](../skills.md) in the repository root. The top-level [README](../README.md) is the short version.
 

@@ -1,3 +1,13 @@
+---
+title: "Set up a Raspberry Pi as the monitor box"
+description: "Flash, secure and prepare a Raspberry Pi 4 or 5 as an always-on network monitor: OS, fixed IP, firewall and Docker."
+slug: raspberry-pi-setup
+series: "Home Network Monitor"
+order: 2
+tags: [raspberry-pi, linux, docker]
+updated: 2026-10-22
+---
+
 # 2. Set up a Raspberry Pi as the monitor box
 
 This guide takes a Raspberry Pi from a box of parts to a secure, updated, always-on machine ready for the monitor. It assumes no prior Pi experience. The next guide after this is [Placing the monitor in your network](04-network-placement.md), then [Install](05-install-and-configure.md).

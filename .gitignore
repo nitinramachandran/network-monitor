@@ -3,4 +3,4 @@
 .github/modernize/
 __pycache__/
 *.pyc
-docs/network-monitor-tutorial.md
+docs/dist/

@@ -1,3 +1,13 @@
+---
+title: "Placing the monitor in your network"
+description: "Where to connect the monitor box, how to configure your ISP router, and how to build a gateway setup safely with a rollback plan."
+slug: network-placement
+series: "Home Network Monitor"
+order: 4
+tags: [networking, router, nftables]
+updated: 2026-10-22
+---
+
 # 4. Placing the monitor in your network
 
 Where you connect the monitor box decides what it can see. This guide explains the options, how to configure your ISP router for each, and how to build the "box in front of your devices" (gateway) setup.
@@ -34,6 +44,15 @@ Plug the box into a LAN port on the ISP router. Nothing else changes.
 | Web activity, if devices use the box's Pi-hole for DNS | WAN-side intrusion events |
 
 This is the right starting point for almost everyone.
+
+### Setup A2: box behind your own router
+
+```
+Internet ── ISP router (Wi-Fi off) ──WAN── YOUR ROUTER ──┬── Wi-Fi and wired devices
+                                                         └── monitor box
+```
+
+Use this when the ISP router **locks DHCP and DNS settings**, so you cannot point devices at Pi-hole. A basic router of your own, placed behind the ISP one, gives you that control. You get everything Setup A gives, including web activity, for the devices on your router. The cost is double NAT. Full steps, and what Airtel, Tata Play Fiber and JioFiber users commonly report, are in [guide 12](12-isp-router-guide.md).
 
 ### Setup B: box as the gateway (stage 3a)
 
@@ -73,11 +92,14 @@ If you replace the ISP router's routing role with an OpenWrt, pfSense or similar
 | If you want... | Choose |
 |---|---|
 | Alerts for new devices, simplest and safest | A |
+| Sites visited, but the ISP router locks DNS/DHCP | A2 (or B) |
 | Plus sites visited | A + Pi-hole ([guide 6](06-pihole.md)) |
 | Plus MB per device, accept some network work | B (or C if you own a managed switch) |
 | Zero risk of breaking the internet | A or C |
 
 ## 4.3 Configuring your ISP router
+
+Provider-specific notes (Airtel, Tata Play Fiber, JioFiber, and how to test what your own unit allows) are in [guide 12](12-isp-router-guide.md). The general steps follow.
 
 Menu names differ between router brands and firmware versions, so look for the equivalent of the items below. Take a screenshot of each page before you change it.
 
@@ -203,7 +225,7 @@ Because the ISP router's configuration was never changed in Setup B, this restor
 
 | Setting | A | B | C |
 |---|---|---|---|
-| Box IP | reserved on ISP router | LAN side `192.168.50.1` | reserved on ISP router |
+| Box IP | reserved on ISP router (A) or on your router (A2) | LAN side `192.168.50.1` | reserved on ISP router |
 | App subnet / gateway | auto or `192.168.1.0/24` / `192.168.1.1` | `192.168.50.0/24` / `192.168.50.1` | as A |
 | DNS for devices | box IP via router DHCP (if allowed) | box IP via box's DHCP | as A |
 | Agent `LAN_PREFIX` | n/a | `192.168.50.` | `192.168.1.` |

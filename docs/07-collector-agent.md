@@ -1,3 +1,13 @@
+---
+title: "Data usage and intrusion agent"
+description: "Count data used per device per day and detect inbound connection attempts with the Python collector agent."
+slug: collector-agent
+series: "Home Network Monitor"
+order: 7
+tags: [python, scapy, networking]
+updated: 2026-10-22
+---
+
 # 7. Data usage and intrusion agent
 
 The built-in scanner and Pi-hole cannot tell you **how much data each device uses**, or see **inbound probes**. For that, a small Python **collector agent** (`collector-agent/agent.py`) watches network packets on a machine that can see the traffic and reports totals to the monitor's API.

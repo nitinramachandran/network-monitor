@@ -1,3 +1,13 @@
+---
+title: "Set up a PC, mini PC or laptop as the monitor box"
+description: "Prepare an old PC, mini PC or laptop running Ubuntu or Debian as an always-on network monitor."
+slug: pc-or-mini-pc-setup
+series: "Home Network Monitor"
+order: 3
+tags: [linux, ubuntu, docker]
+updated: 2026-10-22
+---
+
 # 3. Set up a PC, mini PC or laptop as the monitor box
 
 An old desktop, a small fanless mini PC or a retired laptop makes an excellent monitor box: more power than a Pi, and an SSD makes it durable. This guide prepares one running Linux. If you are using a Raspberry Pi, see [guide 2](02-raspberry-pi.md).

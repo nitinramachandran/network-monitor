@@ -1,3 +1,13 @@
+---
+title: "Troubleshooting"
+description: "Symptom-by-symptom fixes for install, scanning, Pi-hole, data usage and alert problems."
+slug: troubleshooting
+series: "Home Network Monitor"
+order: 10
+tags: [troubleshooting]
+updated: 2026-10-22
+---
+
 # 10. Troubleshooting
 
 Start here: **UI → Connectivity** shows the state and last error of the scanner, Pi-hole collector and agents. Then find your symptom below.
@@ -59,6 +69,7 @@ Run `docker compose logs backend | grep -i scan` for scan errors.
 |---|---|
 | Connectivity shows the collector failing | Read the message. "Pi-hole rejected the password": set the correct password. Connection refused/timeout: wrong URL or Pi-hole not running (`pihole status`). |
 | Pi-hole's own Query Log is empty for your device | The device is not using Pi-hole for DNS (router DNS not changed, lease not renewed, DoH/Private DNS, IPv6 DNS). See guide 6, sections 6.3 and 6.4. |
+| Router DNS/DHCP settings are greyed out or reset by the provider | The ISP router is locked. See the [ISP router guide](12-isp-router-guide.md) for tests and workarounds (own router behind it, per-device DNS, gateway setup). |
 | Every query shows one client IP | Devices ask the router, which forwards to Pi-hole. See guide 6, section 6.6. |
 | Lookups appear under no device | The client IP is not a discovered device yet: run a scan; give it a DHCP reservation. |
 | Some devices missing | IoT devices that hard-code 8.8.8.8 or use DoH skip Pi-hole. |

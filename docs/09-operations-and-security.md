@@ -1,3 +1,13 @@
+---
+title: "Operations and security"
+description: "Update, back up, secure and recover the monitor, including lost-password recovery."
+slug: operations-and-security
+series: "Home Network Monitor"
+order: 9
+tags: [backup, security, operations]
+updated: 2026-10-22
+---
+
 # 9. Operations and security
 
 Keeping the monitor healthy, backed up and safe. Run commands in the repository folder on the monitor box unless stated otherwise.
